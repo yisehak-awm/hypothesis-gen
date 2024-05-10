@@ -1,5 +1,4 @@
 import type { MetaFunction } from "@remix-run/node";
-import logo from "/logo.png";
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,13 +9,21 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div className="grid wrapper w-full h-screen">
-      <div className="sidebar bg-slate-200 p-4">
-        <img src={logo} className="h-16" alt="Rejuve.bio logo" />
+    <>
+      <header className="mb-4 p-4 px-12">
+        <h1 className="text-2xl font-bold">Hypothesis Generation</h1>
+        <p className=" text-slate-500">You have 3 generated hypotheses</p>
+      </header>
+      <div className="px-12">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
       </div>
-      <div className="content overflow-y-auto p-4 px-12">
-        <h1 className="text-2xl font-bold">Hypothesis generation</h1>
-      </div>
-    </div>
+      <p></p>
+    </>
   );
 }

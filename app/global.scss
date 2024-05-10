@@ -1,12 +1,12 @@
 .wrapper {
   grid-template-areas: "sidebar content";
   grid-template-columns: max-content auto;
-}
 
-.sidebar {
-  grid-area: sidebar;
-}
+  nav {
+    grid-area: sidebar;
+  }
 
-.content {
-  grid-area: content;
+  main {
+    grid-area: content;
+  }
 }
