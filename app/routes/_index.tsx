@@ -1,41 +1,22 @@
 import type { MetaFunction } from "@remix-run/node";
+import logo from "/logo.png";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Hypothesis Generation" },
+    { name: "description", content: "Rejuve.bio hypothesis generation" },
   ];
 };
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+    <div className="grid wrapper w-full h-screen">
+      <div className="sidebar bg-slate-200 p-4">
+        <img src={logo} className="h-16" alt="Rejuve.bio logo" />
+      </div>
+      <div className="content overflow-y-auto p-4 px-12">
+        <h1 className="text-2xl font-bold">Hypothesis generation</h1>
+      </div>
     </div>
   );
 }
