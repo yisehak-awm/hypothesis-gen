@@ -7,11 +7,11 @@
     "config": "tailwind.config.ts",
     "css": "app/tailwind.css",
     "baseColor": "slate",
-    "cssVariables": false,
+    "cssVariables": true,
     "prefix": ""
   },
   "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils"
+    "components": "app/@/components",
+    "utils": "app/@/lib/utils"
   }
 }
