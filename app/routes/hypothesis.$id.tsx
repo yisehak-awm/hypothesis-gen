@@ -22,7 +22,7 @@ export default function Index() {
   const { id } = useLoaderData<typeof loader>();
 
   return (
-    <>
+    <div className="flex flex-col h-screen">
       <header className="pt-4 px-12">
         <h1 className="text-xl font-bold">
           {"c.56A>T"} <Link2 className="inline" /> obesity
@@ -34,7 +34,9 @@ export default function Index() {
           { label: "Results", href: `/hypothesis/${id}/results` },
         ]}
       />
-      <Outlet />
-    </>
+      <div className="flex-grow">
+        <Outlet />
+      </div>
+    </div>
   );
 }
