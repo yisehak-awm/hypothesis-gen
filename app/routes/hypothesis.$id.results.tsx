@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 import he from "he";
 import Graph from "~/components/graph";
+import { Button } from "../@/components/ui/button";
+import { ArrowLeftRight, Maximize } from "lucide-react";
 
 const DATA = {
   objects: [
@@ -107,5 +109,19 @@ export default () => {
     };
   }, [data]);
 
-  return <Graph elements={elements} />;
+  return (
+    <>
+      <div className="border rounded p-4 px-6 absolute m-8 mx-12 bg-white z-10">
+        <h3 className="font-bold">biological_process (GO:0008150)</h3>
+        <p className="text-slate-500 mb-2">p-value: 0.56</p>
+        <Button variant="outline" className="me-2">
+          <ArrowLeftRight size={16} className="me-2" /> Select another GO
+        </Button>
+        <Button>
+          <Maximize size={16} className="me-2" /> Show explanation
+        </Button>
+      </div>
+      <Graph elements={elements} />
+    </>
+  );
 };
