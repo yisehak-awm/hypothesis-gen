@@ -10,7 +10,7 @@ const Tabs = ({ tabs }: { tabs: TabItem[] }) => {
     <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200">
       <ul className="flex flex-wrap -mb-px px-12">
         {tabs.map((t) => (
-          <li className="me-2">
+          <li className="me-2" key={t.href}>
             <NavLink
               to={t.href}
               className={({ isActive }) =>
