@@ -1,5 +1,6 @@
-import type { MetaFunction } from "@remix-run/node";
-import { Outlet } from "@remix-run/react";
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { redirect } from "@remix-run/node";
+import { Outlet, useLoaderData } from "@remix-run/react";
 import { Link2 } from "lucide-react";
 import Tabs from "~/components/tabs";
 
@@ -10,7 +11,16 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const loader = async ({ request, params }: LoaderFunctionArgs) => {
+  const url = new URL(request.url);
+  if (url.pathname === `/hypothesis/${params.id}`)
+    throw redirect(`/hypothesis/${params.id}/parameters`);
+  return { id: params.id };
+};
+
 export default function Index() {
+  const { id } = useLoaderData<typeof loader>();
+
   return (
     <>
       <header className="pt-4 px-12">
@@ -20,8 +30,8 @@ export default function Index() {
       </header>
       <Tabs
         tabs={[
-          { label: "Parameters", href: "/hypothesis/1/parameters" },
-          { label: "Results", href: "/hypothesis/1/results" },
+          { label: "Parameters", href: `/hypothesis/${id}/parameters` },
+          { label: "Results", href: `/hypothesis/${id}/results` },
         ]}
       />
       <Outlet />
