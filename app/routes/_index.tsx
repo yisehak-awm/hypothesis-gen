@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
 import { CircleDot, Link2, Plus, Waypoints } from "lucide-react";
 
 export const meta: MetaFunction = () => {
@@ -10,6 +11,7 @@ export const meta: MetaFunction = () => {
 
 const hypotheses: HypothesisSummaryData[] = [
   {
+    id: 1,
     indel: "c.56A>T",
     trait: "Obesity",
     cell: "Cardiomyocytes",
@@ -17,6 +19,7 @@ const hypotheses: HypothesisSummaryData[] = [
     created_on: "3 days ago",
   },
   {
+    id: 2,
     indel: "g.1023G>C",
     trait: "Eye color",
     cell: "Melanocytes",
@@ -24,6 +27,7 @@ const hypotheses: HypothesisSummaryData[] = [
     created_on: "12 hours ago",
   },
   {
+    id: 3,
     indel: "g.2345_2346insAT",
     trait: "Blood type",
     cell: "Hepatocytes",
@@ -33,7 +37,7 @@ const hypotheses: HypothesisSummaryData[] = [
 ];
 
 const HypothesisSummaryCard = ({ data }: { data: HypothesisSummaryData }) => (
-  <a href="#" className="block border rounded p-4">
+  <Link to={`/hypothesis/${data.id}`} className="block border rounded p-4">
     <h2 className="font-bold mb-4 whitespace-nowrap">
       {data.indel} <Link2 className="inline mx-2" /> {data.trait}
     </h2>
@@ -44,7 +48,7 @@ const HypothesisSummaryCard = ({ data }: { data: HypothesisSummaryData }) => (
       <Waypoints className="inline" size={16} /> {data.network}
     </span>
     <p className="text-slate-500 mt-4">Created {data.created_on}</p>
-  </a>
+  </Link>
 );
 
 export default function Index() {

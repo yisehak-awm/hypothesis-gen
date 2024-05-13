@@ -1,4 +1,5 @@
 interface HypothesisSummaryData {
+  id: number;
   indel: string;
   trait: string;
   cell: string;
