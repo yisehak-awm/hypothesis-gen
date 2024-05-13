@@ -14,7 +14,7 @@ const Tabs = ({ tabs }: { tabs: TabItem[] }) => {
             <NavLink
               to={t.href}
               className={({ isActive }) =>
-                `inline-block p-2 border-b-2 ${
+                `inline-block p-2 pb-1 border-b-2 ${
                   isActive
                     ? "font-bold text-black  border-black active"
                     : "border-transparent"
