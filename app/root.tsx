@@ -32,7 +32,9 @@ export default function App() {
   return (
     <div className="grid wrapper w-full h-screen">
       <nav className="bg-slate-100 p-4 px-2 ">
-        <img src={logo} className="h-12" alt="Rejuve.bio logo" />
+        <a href="/">
+          <img src={logo} className="h-12" alt="Rejuve.bio logo" />
+        </a>
         <ul className="mt-8 w-min m-auto text-slate-400">
           <li className="p-2 rounded mb-2 text-black bg-slate-200">
             <a href="#">
