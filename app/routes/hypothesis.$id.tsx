@@ -1,7 +1,7 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
-import { Outlet, useLoaderData } from "@remix-run/react";
-import { Link2 } from "lucide-react";
+import { Outlet, useLoaderData, useNavigate } from "@remix-run/react";
+import { ArrowBigLeft, ArrowLeft, Link2 } from "lucide-react";
 import Tabs from "~/components/tabs";
 
 export const meta: MetaFunction = () => {
@@ -20,11 +20,15 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
 
 export default function Index() {
   const { id } = useLoaderData<typeof loader>();
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col h-screen">
       <header className="pt-4 px-12">
         <h1 className="text-xl font-bold">
+          <a className="me-2 hover:cursor-pointer" onClick={() => navigate(-1)}>
+            <ArrowLeft className="inline me-2" />
+          </a>
           {"c.56A>T"} <Link2 className="inline" /> obesity
         </h1>
       </header>
