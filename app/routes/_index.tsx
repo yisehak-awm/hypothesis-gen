@@ -21,6 +21,7 @@ import {
   CarouselItem,
 } from "../@/components/ui/carousel";
 import { useEffect, useState } from "react";
+import Stepper from "~/components/stepper";
 
 export const meta: MetaFunction = () => {
   return [
@@ -91,6 +92,7 @@ export default function Index() {
         <h1 className="text-2xl font-bold">Hypothesis Generation</h1>
         <p className=" text-slate-500">You have 3 generated hypotheses</p>
       </header>
+
       <ul className="flex px-12">
         {hypotheses.map((h, i) => (
           <li key={i} className="me-4">
@@ -105,10 +107,16 @@ export default function Index() {
               </button>
             </DialogTrigger>
             <DialogContent>
-              <DialogHeader>
-                <DialogDescription>
-                  Step {current}/{count}
-                </DialogDescription>
+              <DialogHeader className="flex flex-row ">
+                <div>
+                  <Stepper
+                    steps={Array(count).fill("")}
+                    current={current - 1}
+                  />
+                  <DialogDescription className="mt-2 me-4">
+                    Step {current}/{count}
+                  </DialogDescription>
+                </div>
                 <DialogTitle>
                   {
                     {
@@ -119,61 +127,67 @@ export default function Index() {
                   }{" "}
                   form step title
                 </DialogTitle>
-                <Carousel
-                  setApi={setApi}
-                  opts={{ watchDrag: false, duration: 20 }}
-                >
-                  <CarouselContent>
-                    <CarouselItem className="ml-1 mt-4">
-                      <Label className="block w-full max-w-sm pb-4">
-                        SNV or indel
-                        <Input
-                          className="mt-2"
-                          placeholder="Ex. g.2345_2346insAT or g.1023G>C or c.56A>T"
-                        />
-                      </Label>
-                      <Label className="block w-full max-w-sm pb-4">
-                        Phenotype / Trait
-                        <Input className="mt-2" placeholder="Ex. Obesity" />
-                      </Label>
-                      <Label className="block w-full max-w-sm pb-4">
-                        Tissue / Cell type
-                        <Input className="mt-2" placeholder="Ex. Hepatocytes" />
-                      </Label>
-                    </CarouselItem>
-                    <CarouselItem className="ml-1 mt-4">
-                      <Label className="block w-full max-w-sm pb-6">
-                        Co-expression network / data
-                        <RadioGroup className="mt-2" defaultValue="r1">
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="r1" />
-                            <Label className="font-normal">
-                              Upload new file
-                            </Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="r2" />
-                            <Label className="font-normal">
-                              Use existing co-expression network for [tissue
-                              name]
-                            </Label>
-                          </div>
-                        </RadioGroup>
-                      </Label>
-                      <Label className="block w-full max-w-sm">
-                        Upload file
-                        <Input className="mt-2" type="file" />
-                        <span className="text-slate-500 text-sm">
-                          * Should be PxP matrix where p is the number of genes
-                        </span>
-                      </Label>
-                    </CarouselItem>
-                    <CarouselItem className="ml-1 mt-4">
-                      <h1>Progress</h1>
-                    </CarouselItem>
-                  </CarouselContent>
-                </Carousel>
               </DialogHeader>
+              <Carousel
+                setApi={setApi}
+                opts={{ watchDrag: false, duration: 20 }}
+              >
+                <CarouselContent>
+                  <CarouselItem className="ml-1 mt-4">
+                    <Label className="block w-full max-w-sm pb-4">
+                      SNV or indel
+                      <Input
+                        className="mt-2"
+                        placeholder="Ex. g.2345_2346insAT or g.1023G>C or c.56A>T"
+                      />
+                    </Label>
+                    <Label className="block w-full max-w-sm pb-4">
+                      Phenotype / Trait
+                      <Input className="mt-2" placeholder="Ex. Obesity" />
+                    </Label>
+                    <Label className="block w-full max-w-sm pb-4">
+                      Tissue / Cell type
+                      <Input className="mt-2" placeholder="Ex. Hepatocytes" />
+                    </Label>
+                  </CarouselItem>
+                  <CarouselItem className="ml-1 mt-4">
+                    <Label className="block w-full max-w-sm pb-6">
+                      Co-expression network / data
+                      <RadioGroup className="mt-2" defaultValue="r1">
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="r1" />
+                          <Label className="font-normal">Upload new file</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="r2" />
+                          <Label className="font-normal">
+                            Use existing co-expression network for [tissue name]
+                          </Label>
+                        </div>
+                      </RadioGroup>
+                    </Label>
+                    <Label className="block w-full max-w-sm">
+                      Upload file
+                      <Input className="mt-2" type="file" />
+                      <span className="text-slate-500 text-sm">
+                        * Should be PxP matrix where p is the number of genes
+                      </span>
+                    </Label>
+                  </CarouselItem>
+                  <CarouselItem className="flex justify-center items-center ml-1 mt-4">
+                    <Stepper
+                      steps={[
+                        "Progress update",
+                        "Doing something important",
+                        "Progress update",
+                        "Progress update",
+                      ]}
+                      current={1}
+                      vertical
+                    />
+                  </CarouselItem>
+                </CarouselContent>
+              </Carousel>
               <DialogFooter className="justify-end">
                 <Button
                   type="button"
